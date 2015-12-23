@@ -61,6 +61,7 @@ class PdfGeneratorTest extends PHPUnit_Framework_TestCase
         $script = 'otherScript.js';
         $baseUrl = 'https://example.com/test';
         $phantomjs = '/var/bin/phantomjs';
+        $orientation = 'landscape';
 
         $generator = new PdfGenerator();
         $generator
@@ -68,6 +69,7 @@ class PdfGeneratorTest extends PHPUnit_Framework_TestCase
             ->setTimeout($timeout)
             ->setBaseUrl($baseUrl)
             ->setConvertScript($script)
+            ->setOrientation($orientation)
             ->ignoreSSLErrors()
             ->setBinaryPath($phantomjs)
             ->addCommandLineOption('--other-option=Test');
@@ -109,6 +111,12 @@ class PdfGeneratorTest extends PHPUnit_Framework_TestCase
             ],
             $generator->getCommandLineOptions(),
             'Should combine data from ignoreSSLErrors and addCommandLineOption'
+        );
+
+        $this->assertEquals(
+            $orientation,
+            $generator->getOrientation(),
+            'Should save orientation'
         );
     }
 
