@@ -12,7 +12,7 @@ Installation
 Install via composer
 
 ```
-$ composer global require clippings/composer-init
+$ composer global require clippings/phantom-pdf
 ```
 
 Usage
