@@ -2,7 +2,7 @@
 
 namespace PhantomPdf\Test;
 
-use PHPUnit_Framework_TestCase;
+use PHPUnit\Framework\TestCase;
 use PhantomPdf\PdfGenerator;
 use Exception;
 use DirectoryIterator;
@@ -12,7 +12,7 @@ use Symfony\Component\Process\Process;
 /**
  * @coversDefaultClass PhantomPdf\PdfGenerator
  */
-class PdfGeneratorTest extends PHPUnit_Framework_TestCase
+class PdfGeneratorTest extends TestCase
 {
     /**
      * @var string
@@ -165,10 +165,8 @@ class PdfGeneratorTest extends PHPUnit_Framework_TestCase
             ->setStoragePath($this->files)
             ->setBinaryPath('phantomjs-not-found');
 
-        $this->setExpectedException(
-            'Symfony\Component\Process\Exception\RuntimeException',
-            'PhantomJS: sh: '
-        );
+        $this->expectException(RuntimeException::class);
+        $this->expectExceptionMessageRegExp('/^PhantomJS: sh: /');
 
         $generator->saveFromView('test', $this->files.'no.pdf');
     }
@@ -180,10 +178,8 @@ class PdfGeneratorTest extends PHPUnit_Framework_TestCase
     {
         $generator = new PdfGenerator();
 
-        $this->setExpectedException(
-            'Exception',
-            'A storage path has not been set'
-        );
+        $this->expectException(\Exception::class);
+        $this->expectExceptionMessage('A storage path has not been set');
 
         $generator->saveFromView('test', $this->files.'no.pdf');
     }
@@ -197,10 +193,8 @@ class PdfGeneratorTest extends PHPUnit_Framework_TestCase
         $generator
             ->setStoragePath(__DIR__.'/no-storage-path');
 
-        $this->setExpectedException(
-            'Exception',
-            'The specified storage path is not writable'
-        );
+        $this->expectException(\Exception::class);
+        $this->expectExceptionMessage('The specified storage path is not writable');
 
         $generator->saveFromView('test', $this->files.'no.pdf');
     }
