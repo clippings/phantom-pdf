@@ -1,10 +1,10 @@
 {
     "_readme": [
         "This file locks the dependencies of your project to a known state",
-        "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
+        "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "f08eed1eab6392d8cb4cfc1c44520f18",
+    "content-hash": "d2443393c85e7d7d5c06d054be25ac02",
     "packages": [
         {
             "name": "symfony/process",
@@ -855,6 +855,7 @@
                 "mock",
                 "xunit"
             ],
+            "abandoned": true,
             "time": "2017-06-30T08:15:21+00:00"
         },
         {

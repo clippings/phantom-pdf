@@ -7,7 +7,6 @@ use PhantomPdf\PdfGenerator;
 use Exception;
 use DirectoryIterator;
 use Symfony\Component\Process\Exception\RuntimeException;
-use Symfony\Component\Process\Process;
 
 /**
  * @coversDefaultClass PhantomPdf\PdfGenerator
